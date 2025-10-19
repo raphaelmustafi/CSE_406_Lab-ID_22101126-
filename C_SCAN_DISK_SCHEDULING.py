@@ -18,10 +18,13 @@ if direction == "right":
         total_movement += abs(cur - r)
         cur = r
     if cur != disk_size - 1:
-        seek_sequence.append(disk_size - 1)
         total_movement += abs(cur - (disk_size - 1))
         cur = disk_size - 1
-    for r in reversed(left):
+        seek_sequence.append(cur)
+    total_movement += (disk_size - 1)
+    cur = 0
+    seek_sequence.append(cur)
+    for r in left:
         seek_sequence.append(r)
         total_movement += abs(cur - r)
         cur = r
@@ -31,10 +34,13 @@ else:
         total_movement += abs(cur - r)
         cur = r
     if cur != 0:
-        seek_sequence.append(0)
         total_movement += abs(cur - 0)
         cur = 0
-    for r in right:
+        seek_sequence.append(cur)
+    total_movement += (disk_size - 1)
+    cur = disk_size - 1
+    seek_sequence.append(cur)
+    for r in reversed(right):
         seek_sequence.append(r)
         total_movement += abs(cur - r)
         cur = r
